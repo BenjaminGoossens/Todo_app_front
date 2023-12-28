@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/ViewTitle.dart';
 import 'AddItemPage.dart';
 import 'DetailPage.dart'; // Importe la classe de la page du formulaire
 
@@ -18,13 +19,34 @@ class _TodoList2State extends State<TodoList2> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Boutons depuis un tableau'),
+          title: const ViewTitle(
+            title: "MY TODO LISTS",
+          ),
         ),
-        body: ListView.builder(
-          itemCount: maListe.length + 1, // +1 pour le bouton d'ajout
-          itemBuilder: (BuildContext context, int index) {
-            if (index == maListe.length) {
-              return ElevatedButton(
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              ListView.builder(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemCount: maListe.length, // +1 pour le bouton d'ajout
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                    title: Text(maListe[index]),
+                    leading: const Icon(Icons.radio_button_off),
+                    onTap: () {
+                      // Naviguer vers la page de détail avec le nom du bouton comme titre
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailPage(maListe[index]),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+              ElevatedButton(
                 onPressed: () async {
                   final result = await Navigator.push(
                     context,
@@ -37,23 +59,10 @@ class _TodoList2State extends State<TodoList2> {
                     });
                   }
                 },
-                child: Text('Ajouter un élément'),
-              );
-            }
-
-            return ElevatedButton(
-              onPressed: () {
-                // Naviguer vers la page de détail avec le nom du bouton comme titre
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                    builder: (context) => DetailPage(maListe[index]),
-                ),
-                );
-              },
-              child: Text(maListe[index]),
-            );
-          },
+                child: Text('NEW LIST'),
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app_front/screens/Home.dart';
 
 void main() {
@@ -10,12 +11,11 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Home(),
+    return MaterialApp(
+      theme: ThemeData(
+          appBarTheme: AppBarTheme(titleTextStyle: GoogleFonts.montserrat()),
+          textTheme: GoogleFonts.mondaTextTheme(Theme.of(context).textTheme)),
+      home: const Home(),
     );
   }
 }
-
-
-
