@@ -16,10 +16,21 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.pageTitle),
+        backgroundColor: Colors.grey,
       ),
       body: Column(
         children: [
+          SizedBox(height: 150.0,),
+          Text(
+            widget.pageTitle,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24.0,
+            ),
+
+
+          ),
+
           Expanded(
             child: ListView.builder(
               itemCount: elements.length,

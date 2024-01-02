@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app_front/screens/TodoList.dart';
-import 'package:todo_app_front/screens/TodoList2.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -51,10 +50,11 @@ class _HomeState extends State<Home> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => TodoList2()),
+                          MaterialPageRoute(builder: (context) => TodoList()),
                         );
                       },
-                      child: Text('Aller à la deuxième page'),
+                      child: Text('Aller à la deuxième page',
+                      ),
                     ),
                   ],
                 ))

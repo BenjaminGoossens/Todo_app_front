@@ -12,25 +12,28 @@ class _AddItemPageState extends State<AddItemPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ajouter un élément'),
+        backgroundColor: Colors.grey,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: _controller,
-              decoration: InputDecoration(labelText: 'Nouvel élément'),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context, _controller.text);
-              },
-              child: Text('Ajouter'),
-            ),
-          ],
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('ajouter un élément'),
+              TextField(
+                controller: _controller,
+                decoration: InputDecoration(labelText: 'Nouvel élément'),
+              ),
+              SizedBox(height: 20),
+              IconButton(
+                onPressed: () {
+                  Navigator.pop(context, _controller.text);
+                },
+                icon: Icon(Icons.add),
+              ),
+            ],
+          ),
         ),
       ),
     );
